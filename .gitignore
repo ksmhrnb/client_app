@@ -1,6 +1,7 @@
 node_modules
 dist
 htdocs
+htdocs_dev
 .tmp
 .sass-cache
 lib
