@@ -3,23 +3,24 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    // connect: {
-    //   server: {
-    //     options: {
-    //       // debug: true,
-    //       // base: 'htdocs',
-    //       port: 9001,
-    //       keepalive: true
+    connect: {
+      server: {
+        options: {
+          // debug: true,
+          base: 'htdocs_dev',
+          hostname: '*',
+          port: 9001,
+          keepalive: true,
 
-    //       // middleware: function(connect, options) {
-    //       //   return [
-    //       //     lrSnippet,
-    //       //     folderMount(connect, 'htdocs')
-    //       //   ];
-    //       // }
-    //     }
-    //   }
-    // },
+          // middleware: function(connect, options) {
+          //   return [
+          //     lrSnippet,
+          //     folderMount(connect, 'htdocs')
+          //   ];
+          // }
+        }
+      }
+    },
     watch: {
       options: {
         livereload: true,
@@ -103,7 +104,7 @@ module.exports = function(grunt) {
 
   });
 
-  // grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-concat');
