@@ -1,3 +1,7 @@
+
+var CONNECT_PORT = 9001;
+var LIVERELOAD_PORT = 35729;
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -9,22 +13,13 @@ module.exports = function(grunt) {
           // debug: true,
           base: 'htdocs_dev',
           hostname: '*',
-          port: 9001,
-          keepalive: true,
-
-          // middleware: function(connect, options) {
-          //   return [
-          //     lrSnippet,
-          //     folderMount(connect, 'htdocs')
-          //   ];
-          // }
+          port: CONNECT_PORT,
+          // keepalive: true,
+          livereload: true,
         }
       }
     },
     watch: {
-      options: {
-        livereload: true,
-      },
       slim: {
         files: ['src/html/**/*.slim'],
         tasks: ['slim:dist'],
@@ -32,6 +27,15 @@ module.exports = function(grunt) {
       coffee: {
         files: ['src/js/**/*.coffee'],
         tasks: ['coffee:dist'],
+      },
+
+      livereload: {
+        options: {
+          livereload: LIVERELOAD_PORT
+        },
+        files: [
+          'htdocs_dev/**/*.*',
+        ]
       },
     },
 
@@ -113,10 +117,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-slim');
 
 
-  // grunt.registerTask('default', ['connect', 'watch']);
-  grunt.registerTask('default', ['watch']);
-
-
   // for production 
   grunt.registerTask('build', [
     'clean:dist',
@@ -125,5 +125,10 @@ module.exports = function(grunt) {
     'concat',
     'uglify',
   ]);
+
+  // for development
+  grunt.registerTask('default', ['connect', 'watch']);
+
+
 
 }
