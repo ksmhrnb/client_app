@@ -15,10 +15,10 @@ module.exports = (grunt) ->
           livereload: true
     watch:
       slim:
-        files: ["src/html/**/*.slim"]
+        files: ["assets/html/**/*.slim"]
         tasks: ["slim:dist"]
       coffee:
-        files: ["src/js/**/*.coffee"]
+        files: ["assets/js/**/*.coffee"]
         tasks: ["coffee:dist"]
       livereload:
         options:
@@ -38,18 +38,18 @@ module.exports = (grunt) ->
       dist:
         files: [
           expand: true
-          cwd: "src/html"
+          cwd: "assets/html"
           src: ["**/*.slim"]
           dest: "htdocs_dev/"
           ext: ".html"
         ]
     coffee:
-      # options:
-      #   sourceMap: true
+      options:
+        sourceMap: true
       dist:
         files: [
           expand: true
-          cwd: "src/js"
+          cwd: "assets/js"
           src: ["**/*.coffee"]
           dest: "htdocs_dev/js/"
           ext: ".js"
