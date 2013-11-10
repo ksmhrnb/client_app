@@ -44,8 +44,8 @@ module.exports = (grunt) ->
           ext: ".html"
         ]
     coffee:
-      # options:
-      #   sourceMap: true
+      options:
+        sourceMap: true
       dist:
         files: [
           expand: true
